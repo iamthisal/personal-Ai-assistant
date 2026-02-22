@@ -5,4 +5,5 @@ langchain-core
 langchain-tavily
 python-dotenv
 langchain-openai
-gradio
+fastapi
+uvicorn[standard]

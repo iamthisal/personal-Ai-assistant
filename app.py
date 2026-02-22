@@ -1,5 +1,12 @@
-from graph import compiled_graph
 
+from graph import compiled_graph
+from fastapi import APIRouter
+
+
+
+router = APIRouter()
+
+@router.post("/user_input")
 def execute_graph(user_input: str):
     result = compiled_graph.invoke({"input" : user_input})
 
@@ -12,3 +19,4 @@ if __name__ == "__main__":
     while True:
         user_input = input("Ask a question :")
         print(execute_graph(user_input))
+
