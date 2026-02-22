@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    <meta name="description" content="Personal AI Assistant — News analysis & scam detection powered by AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo-icon">✦</div>
+                <div class="header-text">
+                    <h1>AI Assistant</h1>
+                    <p class="subtitle">News &amp; Scam Detection</p>
+                </div>
+            </div>
+            <div class="header-badges">
+                <span class="badge badge-news">📰 News</span>
+                <span class="badge badge-scam">🔍 Scam</span>
+            </div>
+        </header>
+
+        <!-- Chat Area -->
+        <main class="chat-area" id="chatArea">
+            <div class="welcome-message">
+                <div class="welcome-icon">✦</div>
+                <h2>Hello! I'm your AI Assistant</h2>
+                <p>Ask me to analyze news or detect scams. Try something like:</p>
+                <div class="suggestion-chips">
+                    <button class="chip" onclick="useSuggestion('What are the latest tech news today?')">📰 Latest tech news</button>
+                    <button class="chip" onclick="useSuggestion('Is this a scam: You won $1 million, click here to claim')">🔍 Check a scam message</button>
+                    <button class="chip" onclick="useSuggestion('Summarize today\'s world news')">🌍 World news summary</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-area">
+            <div class="input-wrapper">
+                <textarea 
+                    id="userInput" 
+                    placeholder="Ask me anything..." 
+                    rows="1"
+                    autocomplete="off"
+                ></textarea>
+                <button id="sendBtn" class="send-btn" onclick="sendMessage()" title="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
