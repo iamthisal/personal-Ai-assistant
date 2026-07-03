@@ -1,4 +1,6 @@
 from dotenv import load_dotenv
+import os
+
 from langchain.agents import create_agent
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import  ChatOpenAI
@@ -8,7 +10,21 @@ from system_prompts import ROUTER_AGENT_SYSTEM_PROMPT, NEWS_AGENT_PROMPT, SCAM_P
 
 load_dotenv()
 
-llm = ChatOpenAI(model="gpt-4.1-mini-2025-04-14")
+openrouter_key = os.getenv("OPENROUTER_KEY")
+openrouter_url = os.getenv("OPENROUTER_URL")
+
+if openrouter_key and openrouter_url:
+    llm = ChatOpenAI(
+        model=os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini"),
+        api_key=openrouter_key,
+        base_url=openrouter_url,
+        max_tokens=int(os.getenv("OPENROUTER_MAX_TOKENS", "1024")),
+    )
+else:
+    llm = ChatOpenAI(
+        model=os.getenv("OPENAI_MODEL", "gpt-4.1-mini-2025-04-14"),
+        max_tokens=int(os.getenv("OPENAI_MAX_TOKENS", "1024")),
+    )
 
 def router_agent(state):
 
@@ -33,7 +49,7 @@ def scam_agent(state):
     scam_chain = prompt | llm
     scam_response  = scam_chain.invoke({"input" : state["input"]})
 
-    return {"response" : scam_response}
+    return {"response" : scam_response.content}
 
 
 

@@ -7,3 +7,5 @@ python-dotenv
 langchain-openai
 fastapi
 uvicorn[standard]
+uv
+#gradio

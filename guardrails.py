@@ -1,7 +1,7 @@
 
 def input_guardril_node(state):
 
-    input_text = state.get("input")
+    input_text = state.get("input", "").lower()
 
     blocked_words = ["bomb" , "weapon", "drug"]
 
@@ -9,5 +9,5 @@ def input_guardril_node(state):
         if word in input_text:
             return {"blocked" : True, "reason" : "Identified malicious intent"}
 
-        return {"blocked" : False}
+    return {"blocked" : False}
 
